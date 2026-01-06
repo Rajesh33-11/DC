@@ -1,4 +1,4 @@
-<img width="1842" height="206" alt="image" src="https://github.com/user-attachments/assets/0c77bab3-a3a7-45ce-9555-a7d844ffb855" /># How to Push Docker Image to AWS ECR using Jenkins Pipeline
+# How to Push Docker Image to AWS ECR using Jenkins Pipeline
 
 ### create a ubuntu Server install Jenkins
 ```
