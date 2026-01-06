@@ -1,4 +1,4 @@
-<img width="1916" height="968" alt="image" src="https://github.com/user-attachments/assets/85589c4b-c155-4f53-98c7-67f658cdc8df" /># How to Push Docker Image to AWS ECR using Jenkins Pipeline
+<img width="1842" height="206" alt="image" src="https://github.com/user-attachments/assets/0c77bab3-a3a7-45ce-9555-a7d844ffb855" /># How to Push Docker Image to AWS ECR using Jenkins Pipeline
 
 ### create a ubuntu Server install Jenkins
 ```
@@ -23,24 +23,27 @@ sudo systemctl start jenkins
 sudo systemctl enable jenkins
 sudo systemctl status jenkins
 ```
-<img width="1151" height="517" alt="image" src="https://github.com/user-attachments/assets/a151b0c0-cce3-415c-a83e-d8fc7999c0ff" />
+<img width="1205" height="582" alt="image" src="https://github.com/user-attachments/assets/50f1a55b-4a7e-45a5-9136-c3c2878a4119" />
 
 ```
 sh jenkins.sh
 ```
-<img width="1913" height="967" alt="image" src="https://github.com/user-attachments/assets/e1493e00-335f-4827-81f3-bc0c7de851f7" />
+<img width="1917" height="962" alt="image" src="https://github.com/user-attachments/assets/ea4f2302-1d7b-4017-8e7b-453f64d9cde7" />
+
 
 ```
 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-<img width="917" height="162" alt="image" src="https://github.com/user-attachments/assets/9da12a7b-fbb6-4a46-8565-41c7d7e9332f" />
+<img width="890" height="137" alt="image" src="https://github.com/user-attachments/assets/fe240cf5-4d25-4ce7-ba12-0d9cc49029e6" />
+
 Install StageView Plugin
 <img width="1882" height="572" alt="image" src="https://github.com/user-attachments/assets/e935902a-9578-4315-bbc4-d649f76de0e8" />
 ### Create a pipeline to get the code from Github to the server
-<img width="1886" height="955" alt="image" src="https://github.com/user-attachments/assets/4d3adcc6-ed35-49c9-9293-bb2f555765aa" />
+<img width="1908" height="971" alt="image" src="https://github.com/user-attachments/assets/d3b61d01-cf0c-4bfb-b4e8-2f4f6ae41010" />
+
 
 ### save and Build pipeline
-<img width="1912" height="938" alt="image" src="https://github.com/user-attachments/assets/eac17b5b-d4a2-438e-9f9b-8b4c01b9f876" />
+<img width="1918" height="920" alt="image" src="https://github.com/user-attachments/assets/99302680-f567-4852-99e9-814def11665d" />
 
 ### Verify in Server
 ```
@@ -49,7 +52,9 @@ cd /var/lib/jenkins/workspace/raja
 ```
 ls
 ```
-<img width="1010" height="250" alt="image" src="https://github.com/user-attachments/assets/b09752e6-856b-40fb-a949-fa3860bbbf89" />
+<img width="1842" height="206" alt="image" src="https://github.com/user-attachments/assets/47a676eb-297a-4e9c-95ae-e0399dd0089b" />
+
+
 
 ### install Docker
 ```
@@ -57,5 +62,41 @@ apt install docker.io -y
 ```
 <img width="1647" height="555" alt="image" src="https://github.com/user-attachments/assets/710379ed-743f-4c4a-a97f-868d10288e05" />
 
+----------------------
 
+### Build image using Pipeline
+```
+pipeline {
+    agent any
+    stages {
+        stage("gitCheckOut") {
+            steps {
+                git "https://github.com/azuredevops7/pwj-netflix-clone.git"
+            }
+        }
+       stage("Build") {
+            steps {
+                sh "docker build -t test ."
+            }
+        }
+
+    }
+}
+
+```
+<img width="1918" height="977" alt="image" src="https://github.com/user-attachments/assets/c36bf475-674f-4138-8aec-2374db0f9605" />
+
+
+----------------------
+
+### Give Permission
+```
+chmod 777 /var/run/docker.sock
+```
+<img width="991" height="141" alt="image" src="https://github.com/user-attachments/assets/de546c9d-0c6d-49bd-a876-8862a4228f6d" />
+
+----------------------
+### Now Build and Verify in Server
+<img width="1917" height="961" alt="image" src="https://github.com/user-attachments/assets/8032c6f2-187f-4eb0-812e-0800cebe0627" />
+<img width="940" height="212" alt="image" src="https://github.com/user-attachments/assets/1999af1d-facb-48d2-bc5b-80db1e2c7203" />
 
