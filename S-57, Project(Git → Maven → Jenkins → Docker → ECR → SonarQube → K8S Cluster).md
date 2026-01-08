@@ -86,4 +86,9 @@ sudo ./aws/install
 <img width="925" height="187" alt="image" src="https://github.com/user-attachments/assets/a0165246-d423-443c-a899-40284fe96b02" />
 
 ------------------------------
-# Setup a cluster
+# Create S3 bucket for kOps state store
+```
+aws s3 mb s3://55rajesh.k8s.locals
+aws s3api put-bucket-versioning --bucket 55rajesh.k8s.locals --region ap-south-1 --versioning-configuration Status=Enabled
+export KOPS_STATE_STORE=s3://55rajesh.k8s.locals
+```
