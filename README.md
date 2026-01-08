@@ -55,6 +55,6 @@
 ### S-54 : Git Commands
 ### S-55 : How to Push Docker Image to AWS ECR using Jenkins Pipeline
 ### S-56 : Git Commands
-### S-57 : Project [ Git → Maven → Jenkins → Docker → ECR → SonarQube → K8S Cluster
+### S-57 : Project [ Git → Maven → Jenkins → Docker → ECR → SonarQube → K8S Cluster ]
 
 
