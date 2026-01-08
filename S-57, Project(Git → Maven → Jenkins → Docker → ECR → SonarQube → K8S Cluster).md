@@ -250,22 +250,21 @@ pipeline {
         } 
         stage('Image_Build') {
             steps {
-                sh 'docker build -t rajeshtest .'
+                sh 'docker build -t rajeshtest:${BUILD_NUMBER} .'
             }
         } 
          stage('Tag') {
             steps {
-                sh 'docker tag rajeshtest:latest 978163710174.dkr.ecr.us-west-1.amazonaws.com/rajeshtest:latest'
+                sh 'docker tag rajeshtest:${BUILD_NUMBER} 978163710174.dkr.ecr.us-west-1.amazonaws.com/rajeshtest:${BUILD_NUMBER}'
             }
         }
         stage('Push') {
             steps {
-                sh 'docker push 978163710174.dkr.ecr.us-west-1.amazonaws.com/rajeshtest:latest'
+                sh 'docker push 978163710174.dkr.ecr.us-west-1.amazonaws.com/rajeshtest:${BUILD_NUMBER}'
             }
         }         
     }
 }
-
 
 ```
 Now Pass Creditionals in Jenikins
