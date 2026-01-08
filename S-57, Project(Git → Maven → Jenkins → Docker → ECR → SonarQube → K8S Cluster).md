@@ -75,12 +75,13 @@ kops version
 ```
 <img width="1862" height="465" alt="image" src="https://github.com/user-attachments/assets/0e4eaac3-f207-4155-9785-8119dee24dbb" />
 
-### AWS CLI
+### Installing AWS CLI
 ```
+apt update && apt install unzip -y
+
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
-aws configure
 ```
 
 ------------------------------
