@@ -57,6 +57,8 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 # Verify installation
 kubectl version --client
 ```
+<img width="1508" height="570" alt="image" src="https://github.com/user-attachments/assets/ac8bf054-2c2d-461d-9e82-7a3a606c99f4" />
+
 ### Installing kops
 ```
 # Download the latest kops binary
@@ -71,3 +73,15 @@ sudo mv kops-linux-amd64 /usr/local/bin/kops
 # Verify installation
 kops version
 ```
+<img width="1862" height="465" alt="image" src="https://github.com/user-attachments/assets/0e4eaac3-f207-4155-9785-8119dee24dbb" />
+
+### AWS CLI
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws configure
+```
+
+------------------------------
+# Setup a cluster
