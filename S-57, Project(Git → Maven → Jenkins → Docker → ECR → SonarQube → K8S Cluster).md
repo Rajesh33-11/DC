@@ -195,6 +195,69 @@ pipeline {
 
 <img width="1918" height="906" alt="image" src="https://github.com/user-attachments/assets/eaebccb9-b9ed-4586-a5a1-66bdd2a929b4" />
 
+**Now configure the Maven**
+Manage Jenikins → Tools → Maven installations → AddMaven → enter name(eg-my maven) → OK
+<img width="1735" height="773" alt="image" src="https://github.com/user-attachments/assets/7293b47c-19c8-4441-a2b3-1da7ad824dfb" />
+```
+pipeline {
+    agent any
 
+    tools {
+        maven "mymaven"
+    }
+
+    stages {
+        stage("Git Checkout") {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Rajesh33-11/char-webapp33.git'
+            }
+        }
+
+        stage("Sonar_Scan") {
+            steps {
+                sh 'sh sonar.sh'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+
+        stage('Install') {
+            steps {
+                sh 'mvn install'
+            }
+        }
+        stage('ACR_Build') {
+            steps {
+                sh 'ecr.sh'
+            }
+        }        
+    }
+}
+
+```
+Now Pass Creditionals in Jenikins
+```
+su - jenkins
+```
+```
+aws configure
+```
 
 
