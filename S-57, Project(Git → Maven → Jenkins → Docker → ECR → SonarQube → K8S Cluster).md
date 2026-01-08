@@ -140,3 +140,58 @@ pipeline {
 Now build and verify in Server for files
 <img width="1913" height="1002" alt="image" src="https://github.com/user-attachments/assets/4356ab96-fd6a-4d19-a2da-ea76ab8d2bc6" />
 <img width="1120" height="171" alt="image" src="https://github.com/user-attachments/assets/ba4f9bbd-2c92-4027-adca-a3946aeb2bb4" />
+# Now integrate SonarQube
+install SonarQube Scanner plugin in jenkins
+<img width="1911" height="557" alt="image" src="https://github.com/user-attachments/assets/6bf0098c-1fab-4982-ab56-544be91ca603" />
+### Passes SonarQube creditanials in Jenkins
+**Click on New Project**
+<img width="1915" height="922" alt="image" src="https://github.com/user-attachments/assets/954da042-f3dc-480b-9b3d-116e07769ed3" />
+**Click on Manually**
+<img width="1917" height="896" alt="image" src="https://github.com/user-attachments/assets/b6e39bdf-66f8-4e6a-a37a-76845b53ea3d" />
+****Enter Project name (eg: maven project)** and click on setup**
+<img width="1902" height="725" alt="image" src="https://github.com/user-attachments/assets/26e6416e-36e0-4134-971a-9b78b47dbb5a" />
+**Enter name and genarate tocken**
+<img width="1852" height="841" alt="image" src="https://github.com/user-attachments/assets/1765516e-f884-4fd8-826c-5fa61531f24b" />
+**Copy the Tocken and go to jenikins → creditanials → click on global → Click on adding some creditanials**
+<img width="1892" height="767" alt="image" src="https://github.com/user-attachments/assets/f039d598-2c3e-41dc-99cd-c722150b9860" />
+<img width="1917" height="975" alt="image" src="https://github.com/user-attachments/assets/be5e4932-f9ff-4518-af3f-cc39a4ef30f0" />
+**Now enable Sonar Qube in Jenikins**
+Manage Jenikins → system → SonarQube Servers
+<img width="1665" height="366" alt="image" src="https://github.com/user-attachments/assets/7ff596f2-0c5c-4168-a7c8-4503da45690d" />
+**Click on Add sonar Qube**
+Enter name , SonarQube_URl and select Auth_token, click on SAVE
+<img width="1712" height="717" alt="image" src="https://github.com/user-attachments/assets/44cdf200-96a8-46d8-9370-35c8f8c18b17" />
+**go to SonarQube click on Continue**
+<img width="1915" height="768" alt="image" src="https://github.com/user-attachments/assets/61d65583-e79e-4157-9100-96e813b6ded1" />
+**Click on Maven and Copy the commands**
+<img width="1886" height="930" alt="image" src="https://github.com/user-attachments/assets/77ba964c-7d87-4c76-b2b9-7a661f53c18d" />
+**Create a pipeline**
+```
+pipeline {
+    agent any
+
+    stages {
+        stage("Git Checkout") {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Rajesh33-11/char-webapp33.git'
+            }
+         stage("SonarQube") {
+            steps {
+                sh '''
+                     mvn sonar:sonar \
+                       -Dsonar.projectKey=mavenproject \
+                       -Dsonar.host.url=http://13.52.237.140:9000 \
+                       -Dsonar.login=2f102050af6650c6793cedb817a1d4fed8d27f80
+                 '''
+            }
+        }
+    }
+}
+
+```
+
+
+
+
+
