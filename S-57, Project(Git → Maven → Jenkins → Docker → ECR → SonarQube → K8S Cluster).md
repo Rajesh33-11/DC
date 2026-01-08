@@ -31,8 +31,10 @@ sudo systemctl status jenkins
 
 ```
 sh jenkins.sh
-------------------
+```
+------------------------------
 # Install Docker
+
 ```
 apt install docker.io -y
 ```
