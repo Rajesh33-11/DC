@@ -171,21 +171,25 @@ pipeline {
     agent any
 
     stages {
+
         stage("Git Checkout") {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/Rajesh33-11/char-webapp33.git'
             }
-         stage("SonarQube") {
+        }
+
+        stage("SonarQube") {
             steps {
                 sh '''
-                     mvn sonar:sonar \
-                       -Dsonar.projectKey=mavenproject \
-                       -Dsonar.host.url=http://13.52.237.140:9000 \
-                       -Dsonar.login=2f102050af6650c6793cedb817a1d4fed8d27f80
-                 '''
+                mvn sonar:sonar \
+                  -Dsonar.projectKey=mavenproject \
+                  -Dsonar.host.url=http://13.52.237.140:9000 \
+                  -Dsonar.login=2f102050af6650c6793cedb817a1d4fed8d27f80
+                '''
             }
         }
+
     }
 }
 
