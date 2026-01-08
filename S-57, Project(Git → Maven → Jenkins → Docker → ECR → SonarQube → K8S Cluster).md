@@ -118,3 +118,7 @@ Public_ip:9000
 ```
 <img width="1908" height="998" alt="image" src="https://github.com/user-attachments/assets/2edc4416-2bd0-46a5-86c8-1d6d67500542" />
 Defualt - User_name: admin, Password: admin
+<img width="1918" height="967" alt="image" src="https://github.com/user-attachments/assets/b1eb5ab9-a29a-421f-9ab0-2b4aefc1844b" />
+
+--------------------------------
+# Create a pipeline Clone the website files from GitHub to the server.
