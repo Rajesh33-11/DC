@@ -105,3 +105,8 @@ kops create cluster --name=rajesh33.k8s.local --zones=ap-northeast-3a --control-
 ```
 kops update cluster --name rajesh33.k8s.local --yes --admin
 ```
+--------------------------------
+# I want create Sonarcube container
+```
+docker run -itd --name  con1 -p 9000:9000 sonarqube:8.7-community
+```
