@@ -106,6 +106,11 @@ kops create cluster --name=rajesh33.k8s.local --zones=ap-northeast-3a --control-
 kops update cluster --name rajesh33.k8s.local --yes --admin
 ```
 --------------------------------
+#  create ECR
+**go to AWS console → ECR → Click on create → enter name (eg: rajeshtest) → click on create**
+<img width="1912" height="772" alt="image" src="https://github.com/user-attachments/assets/3011f9d9-6ddd-48ff-8999-7436aa61d39f" />
+
+-----------------------------------
 # I want create Sonarcube container
 ```
 docker run -itd --name  con1 -p 9000:9000 sonarqube:8.7-community
