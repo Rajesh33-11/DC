@@ -122,3 +122,18 @@ Defualt - User_name: admin, Password: admin
 
 --------------------------------
 # Create a pipeline Clone the website files from GitHub to the server.
+```
+pipeline {
+    agent any 
+
+    stages {
+
+        stage('Git Checkout') {
+            steps {
+                git "https://github.com/Rajesh33-11/char-webapp33.git"
+            }
+        }
+    }
+}
+```
+Now build and verify in Server for files
