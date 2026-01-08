@@ -176,7 +176,6 @@ pipeline {
     agent any
 
     stages {
-
         stage("Git Checkout") {
             steps {
                 git branch: 'main',
@@ -184,23 +183,17 @@ pipeline {
             }
         }
 
-        stage("SonarQube") {
+        stage("Sonar_Scan") {
             steps {
-                sh '''
-                mvn sonar:sonar \
-                  -Dsonar.projectKey=mavenproject \
-                  -Dsonar.host.url=http://13.52.237.140:9000 \
-                  -Dsonar.login=2f102050af6650c6793cedb817a1d4fed8d27f80
-                '''
+                sh 'sh sonar.sh'
             }
         }
-
     }
 }
 
 ```
 
-<img width="1918" height="981" alt="image" src="https://github.com/user-attachments/assets/51315552-fb3e-4e93-a903-06a0fd821110" />
+<img width="1918" height="906" alt="image" src="https://github.com/user-attachments/assets/eaebccb9-b9ed-4586-a5a1-66bdd2a929b4" />
 
 
 
