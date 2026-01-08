@@ -243,13 +243,29 @@ pipeline {
                 sh 'mvn install'
             }
         }
-        stage('ACR_Build') {
+        stage('ACR_LOGIN') {
             steps {
-                sh 'ecr.sh'
+                sh 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 978163710174.dkr.ecr.us-west-1.amazonaws.com'
             }
-        }        
+        } 
+        stage('Image_Build') {
+            steps {
+                sh 'docker build -t rajeshtest .'
+            }
+        } 
+         stage('Tag') {
+            steps {
+                sh 'docker tag rajeshtest:latest 978163710174.dkr.ecr.us-west-1.amazonaws.com/rajeshtest:latest'
+            }
+        }
+        stage('Push') {
+            steps {
+                sh 'docker push 978163710174.dkr.ecr.us-west-1.amazonaws.com/rajeshtest:latest'
+            }
+        }         
     }
 }
+
 
 ```
 Now Pass Creditionals in Jenikins
