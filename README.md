@@ -57,6 +57,3 @@
 ### S-56 : Git Commands
 ### S-57 : Git Commands
 
-
-S-57
-<img width="81" height="1369" alt="image" src="https://github.com/user-attachments/assets/79f3e202-4270-4368-be57-4068650050e8" />
