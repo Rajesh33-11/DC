@@ -92,3 +92,16 @@ aws s3 mb s3://55rajesh.k8s.locals
 aws s3api put-bucket-versioning --bucket 55rajesh.k8s.locals --region ap-south-1 --versioning-configuration Status=Enabled
 export KOPS_STATE_STORE=s3://55rajesh.k8s.locals
 ```
+<img width="1486" height="201" alt="image" src="https://github.com/user-attachments/assets/a2e9aa0d-9582-4dd1-b936-be6f88109ef5" />
+
+--------------------------------
+# This command creates a Kubernetes cluster configuration using kOps on AWS
+```
+kops create cluster --name=rajesh33.k8s.local --zones=ap-northeast-3a --control-plane-size=m7i-flex.large --control-plane-count=1 --node-count=2 --node-size=t3.micro --image=ami-06571d6ae17e327ff
+```
+<img width="1867" height="537" alt="image" src="https://github.com/user-attachments/assets/c96af9e9-b7c2-45bf-b633-abed61ed36aa" />
+
+# update cluster
+```
+kops update cluster --name rajesh33.k8s.local --yes --admin
+```
