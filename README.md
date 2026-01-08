@@ -53,7 +53,7 @@
 ### S-52 : Git Commands
 ### S-53 : Git Commands
 ### S-54 : Git Commands
-### S-55 : Git Commands
+### S-55 : How to Push Docker Image to AWS ECR using Jenkins Pipeline
 ### S-56 : Git Commands
 ### S-57 : Git Commands
 
