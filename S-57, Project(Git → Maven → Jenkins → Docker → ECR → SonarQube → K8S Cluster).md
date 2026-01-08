@@ -206,7 +206,14 @@ pipeline {
         maven "mymaven"
     }
 
+    environment {
+        AWS_REGION = "us-west-1"
+        ECR_REGISTRY = "978163710174.dkr.ecr.us-west-1.amazonaws.com"
+        IMAGE_NAME = "rajeshtest"
+    }
+
     stages {
+
         stage("Git Checkout") {
             steps {
                 git branch: 'main',
@@ -214,57 +221,63 @@ pipeline {
             }
         }
 
-        stage("Sonar_Scan") {
+        stage("Sonar Scan") {
             steps {
                 sh 'sh sonar.sh'
             }
         }
 
-        stage('Compile') {
+        stage("Build with Maven") {
             steps {
-                sh 'mvn compile'
+                sh 'mvn clean install'
             }
         }
 
-        stage('Test') {
+        stage("ECR Login") {
             steps {
-                sh 'mvn test'
+                sh '''
+                  aws ecr get-login-password --region $AWS_REGION \
+                  | docker login --username AWS --password-stdin $ECR_REGISTRY
+                '''
             }
         }
 
-        stage('Package') {
+        stage("Docker Image Build") {
             steps {
-                sh 'mvn package'
+                sh '''
+                  docker build -t $IMAGE_NAME:${BUILD_NUMBER} .
+                '''
             }
         }
 
-        stage('Install') {
+        stage("Docker Tag") {
             steps {
-                sh 'mvn install'
+                sh '''
+                  docker tag $IMAGE_NAME:${BUILD_NUMBER} \
+                  $ECR_REGISTRY/$IMAGE_NAME:${BUILD_NUMBER}
+                '''
             }
         }
-        stage('ACR_LOGIN') {
+
+        stage("Docker Push") {
             steps {
-                sh 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 978163710174.dkr.ecr.us-west-1.amazonaws.com'
-            }
-        } 
-        stage('Image_Build') {
-            steps {
-                sh 'docker build -t rajeshtest:${BUILD_NUMBER} .'
-            }
-        } 
-         stage('Tag') {
-            steps {
-                sh 'docker tag rajeshtest:${BUILD_NUMBER} 978163710174.dkr.ecr.us-west-1.amazonaws.com/rajeshtest:${BUILD_NUMBER}'
+                sh '''
+                  docker push $ECR_REGISTRY/$IMAGE_NAME:${BUILD_NUMBER}
+                '''
             }
         }
-        stage('Push') {
+
+        stage("Kubernetes Deployment") {
             steps {
-                sh 'docker push 978163710174.dkr.ecr.us-west-1.amazonaws.com/rajeshtest:${BUILD_NUMBER}'
+                sh '''
+                  sed -i "s/IMAGE_TAG/${BUILD_NUMBER}/g" deployment.yml
+                  kubectl apply -f deployment.yml
+                '''
             }
-        }         
+        }
     }
 }
+
 
 ```
 Now Pass Creditionals in Jenikins
