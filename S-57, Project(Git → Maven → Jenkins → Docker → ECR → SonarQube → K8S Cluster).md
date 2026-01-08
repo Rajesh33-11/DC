@@ -138,3 +138,5 @@ pipeline {
 
 ```
 Now build and verify in Server for files
+<img width="1913" height="1002" alt="image" src="https://github.com/user-attachments/assets/4356ab96-fd6a-4d19-a2da-ea76ab8d2bc6" />
+<img width="1120" height="171" alt="image" src="https://github.com/user-attachments/assets/ba4f9bbd-2c92-4027-adca-a3946aeb2bb4" />
