@@ -41,3 +41,33 @@ apt install docker.io -y
 <img width="1565" height="519" alt="image" src="https://github.com/user-attachments/assets/a66f9c6b-cb7f-4c55-9581-af633e8b0d1d" />
 
 ------------------------------
+# Setup a cluster
+### Installing kubectl
+```
+# Download the latest kubectl binary
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+# Validate the binary (optional but recommended)
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+
+# Install kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+# Verify installation
+kubectl version --client
+```
+### Installing kops
+```
+# Download the latest kops binary
+curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+
+# Make it executable
+chmod +x kops-linux-amd64
+
+# Move to system path
+sudo mv kops-linux-amd64 /usr/local/bin/kops
+
+# Verify installation
+kops version
+```
