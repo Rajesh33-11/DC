@@ -83,6 +83,7 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 ```
+<img width="925" height="187" alt="image" src="https://github.com/user-attachments/assets/a0165246-d423-443c-a899-40284fe96b02" />
 
 ------------------------------
 # Setup a cluster
