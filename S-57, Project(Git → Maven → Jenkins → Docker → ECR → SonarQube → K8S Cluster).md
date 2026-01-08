@@ -110,3 +110,11 @@ kops update cluster --name rajesh33.k8s.local --yes --admin
 ```
 docker run -itd --name  con1 -p 9000:9000 sonarqube:8.7-community
 ```
+<img width="1762" height="450" alt="image" src="https://github.com/user-attachments/assets/68879062-7e3c-4242-9c19-092f9618ee39" />
+
+# Access Sonarcube container
+```
+Public_ip:9000
+```
+<img width="1908" height="998" alt="image" src="https://github.com/user-attachments/assets/2edc4416-2bd0-46a5-86c8-1d6d67500542" />
+Defualt - User_name: admin, Password: admin
