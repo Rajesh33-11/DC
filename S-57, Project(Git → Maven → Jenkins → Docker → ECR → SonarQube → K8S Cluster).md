@@ -289,4 +289,43 @@ aws configure
 ```
 <img width="1201" height="396" alt="image" src="https://github.com/user-attachments/assets/49e89fec-d0cf-47ca-a901-ba6e718d4fb4" />
 
+```
+exit
+```
+```
+chmod 777 /var/run/docker.sock
+```
+**1️⃣ Created kube config directory for Jenkins**
+```
+sudo mkdir -p /var/lib/jenkins/.kube
+```
+
+**2️⃣ Copied kubeconfig**
+```
+sudo cp ~/.kube/config /var/lib/jenkins/.kube/config
+```
+
+**3️⃣ Changed ownership**
+```
+sudo chown -R jenkins:jenkins /var/lib/jenkins/.kube
+```
+
+**4️⃣ Restarted Jenkins**
+```
+sudo systemctl restart jenkins
+```
+
+**5️⃣ Verified as Jenkins user**
+```
+sudo -u jenkins kubectl get nodes
+```
+
+**Output shows:**
+STATUS: Ready
+
+
+✅ This confirms Jenkins CAN ACCESS Kubernetes now
+
+
+
 
