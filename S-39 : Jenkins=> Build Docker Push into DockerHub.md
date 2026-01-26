@@ -67,7 +67,7 @@ pipeline {
 <img width="1402" height="296" alt="image" src="https://github.com/user-attachments/assets/82fb9846-a53c-46af-a62f-dbe8a21f2ae4" />
 
 ```
-chmod  777 /var/run/docker/sock
+chmod  777 /var/run/docker.sock
 ```
 ```
 pipeline {
