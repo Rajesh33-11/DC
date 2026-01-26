@@ -37,7 +37,7 @@
 ### S-36 : Git Commands
 ### S-37 : Git Commands
 ### S-38 : Git Commands
-### S-39 : Git Commands
+### S-39 : Jenkins=> Build Docker Push into DockerHub
 ### S-40 : Kubernetes create Cluster
 ### S-41 : Kubernetes create pod, service file using Nodeport,Loadbalancer
 ### S-42 : Kubernetes ReplicationController,ReplicaSet
