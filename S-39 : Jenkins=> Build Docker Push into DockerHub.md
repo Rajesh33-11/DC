@@ -22,7 +22,8 @@ sudo systemctl start jenkins
 sudo systemctl enable jenkins
 sudo systemctl status jenkins
 ```
-<img width="1107" height="545" alt="image" src="https://github.com/user-attachments/assets/63154375-4839-4237-b434-439ae904988d" />
+<img width="1893" height="562" alt="image" src="https://github.com/user-attachments/assets/b06ab2f5-fe95-4c00-b2bd-dd823bda34c7" />
+
 
 ```
 sh jenkins.sh
