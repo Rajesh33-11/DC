@@ -34,4 +34,8 @@ sh jenkins.sh
 ```
 apt install docker.io -y
 ```
-<img width="1565" height="519" alt="image" src="https://github.com/user-attachments/assets/a66f9c6b-cb7f-4c55-9581-af633e8b0d1d" />
+<img width="1165" height="297" alt="image" src="https://github.com/user-attachments/assets/706431d7-c5a2-49d3-a024-375d77693499" />
+
+------------------------------
+
+
