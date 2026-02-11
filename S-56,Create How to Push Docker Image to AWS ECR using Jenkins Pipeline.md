@@ -74,7 +74,7 @@ Required to run it as a command
 
 ## 3️⃣ Move kubectl to system PATH
 ```
-mv kubectl /usr/local/bin/
+mv kubectl /usr/local/bin/kubectl
 ```
 Explanation:
 Moves kubectl to /usr/local/bin
