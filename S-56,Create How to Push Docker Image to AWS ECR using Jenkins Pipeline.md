@@ -27,80 +27,68 @@ sudo systemctl start jenkins
 sudo systemctl enable jenkins
 sudo systemctl status jenkins
 ```
-<img width="1205" height="582" alt="image" src="https://github.com/user-attachments/assets/50f1a55b-4a7e-45a5-9136-c3c2878a4119" />
+<img width="1885" height="566" alt="image" src="https://github.com/user-attachments/assets/526a1bee-a39c-4211-b18b-af9a07061300" />
+
 
 ```
 sh jenkins.sh
 ```
-<img width="1917" height="962" alt="image" src="https://github.com/user-attachments/assets/ea4f2302-1d7b-4017-8e7b-453f64d9cde7" />
-
-
+### Installing AWS CLI
 ```
-cat /var/lib/jenkins/secrets/initialAdminPassword
+apt update && apt install unzip -y
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws configure
 ```
-<img width="890" height="137" alt="image" src="https://github.com/user-attachments/assets/fe240cf5-4d25-4ce7-ba12-0d9cc49029e6" />
+<img width="982" height="216" alt="image" src="https://github.com/user-attachments/assets/b6616f96-c2a2-42b0-b057-ce33ff3d6bb8" />
 
-Install StageView Plugin
-<img width="1882" height="572" alt="image" src="https://github.com/user-attachments/assets/e935902a-9578-4315-bbc4-d649f76de0e8" />
-### Create a pipeline to get the code from Github to the server
-<img width="1908" height="971" alt="image" src="https://github.com/user-attachments/assets/d3b61d01-cf0c-4bfb-b4e8-2f4f6ae41010" />
+_________________________________________________
 
-
-### save and Build pipeline
-<img width="1918" height="920" alt="image" src="https://github.com/user-attachments/assets/99302680-f567-4852-99e9-814def11665d" />
-
-### Verify in Server
+# Install Kubectl 
+## 1️⃣ Download the latest stable kubectl binary
 ```
-cd /var/lib/jenkins/workspace/raja
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 ```
+- Explanation:
+- curl → Downloads data from a URL
+-L → Follows redirects
+-O → Saves the file with the same name as in the URL (kubectl)
+Inner curl:
+Reads the latest stable Kubernetes version from stable.txt
+Example output: v1.30.x
+linux/amd64/kubectl → Downloads kubectl for Linux 64-bit
+
+### 📌 Result:
+Latest stable kubectl binary is downloaded to the current directory.
+
+## 2️⃣ Give execute permission
 ```
-ls
+chmod +x kubectl
 ```
-<img width="1842" height="206" alt="image" src="https://github.com/user-attachments/assets/47a676eb-297a-4e9c-95ae-e0399dd0089b" />
+Explanation:
+Adds execute permission to the kubectl binary
+Required to run it as a command
+## 📌 Without this, Linux will block execution.
 
-
-
-### install Docker
+## 3️⃣ Move kubectl to system PATH
 ```
-apt install docker.io -y
+mv kubectl /usr/local/bin/
 ```
-<img width="1647" height="555" alt="image" src="https://github.com/user-attachments/assets/710379ed-743f-4c4a-a97f-868d10288e05" />
-
-----------------------
-
-### Build image using Pipeline
+Explanation:
+Moves kubectl to /usr/local/bin
+This directory is already part of the system $PATH
+## 📌 Benefit:
+You can run kubectl from any directory.
+⚠️ In most systems this should be:
+sudo mv kubectl /usr/local/bin/
+## 4️⃣ Verify kubectl installation
 ```
-pipeline {
-    agent any
-    stages {
-        stage("gitCheckOut") {
-            steps {
-                git "https://github.com/azuredevops7/pwj-netflix-clone.git"
-            }
-        }
-       stage("Build") {
-            steps {
-                sh "docker build -t test ."
-            }
-        }
-
-    }
-}
-
+kubectl version
 ```
-<img width="1918" height="977" alt="image" src="https://github.com/user-attachments/assets/c36bf475-674f-4138-8aec-2374db0f9605" />
-
-
-----------------------
-
-### Give Permission
-```
-chmod 777 /var/run/docker.sock
-```
-<img width="991" height="141" alt="image" src="https://github.com/user-attachments/assets/de546c9d-0c6d-49bd-a876-8862a4228f6d" />
-
-----------------------
-### Now Build and Verify in Server
-<img width="1917" height="961" alt="image" src="https://github.com/user-attachments/assets/8032c6f2-187f-4eb0-812e-0800cebe0627" />
-<img width="940" height="212" alt="image" src="https://github.com/user-attachments/assets/1999af1d-facb-48d2-bc5b-80db1e2c7203" />
-
+Explanation:
+Confirms kubectl is installed
+Shows client and server version (server appears only if a cluster is connected)
+## 📌 Recommended check:
+kubectl version --client
