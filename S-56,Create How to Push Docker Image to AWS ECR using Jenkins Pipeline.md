@@ -154,3 +154,48 @@ from anywhere in terminal.
 ```
 eksctl version
 ```
+__________________________________________________________________________
+# Create EKS Cluster
+```
+eksctl create cluster \
+--name=swiggy-cluster \
+--version 1.30 \
+--zones=us-east-1a,us-east-1b,us-east-1c \
+--without-nodegroup
+
+
+kubectl cluster-info
+
+kubectl cluster-info dump
+
+
+eksctl utils associate-iam-oidc-provider \
+--region us-east-1 \
+--cluster swiggy-cluster \
+--approve
+
+
+eksctl create nodegroup \
+--cluster=swiggy-cluster \
+--region=us-east-1 \
+--name=swiggy-cluster-ng-1 \
+--node-type=t2.micro \
+--nodes=2 \
+--nodes-min=2 \
+--nodes-max=4 \
+--node-volume-size=20 \
+--ssh-access \
+--ssh-public-key=shamuprojectkey \ **Change your key pair name**
+--managed \
+--asg-access \
+--external-dns-access \
+--full-ecr-access \
+--appmesh-access \
+--alb-ingress-access
+
+
+eksctl get cluster
+eksctl get nodegroup --cluster swiggy-cluster
+
+
+```
