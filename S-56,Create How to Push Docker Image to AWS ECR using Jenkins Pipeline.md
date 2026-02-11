@@ -92,3 +92,65 @@ Confirms kubectl is installed
 Shows client and server version (server appears only if a cluster is connected)
 ## 📌 Recommended check:
 kubectl version --client
+__________________________________________________________________________________________________________________________________
+
+# Install Eksctl
+### Installing eksctl – Step-by-Step Explanation
+
+## 🔹 What is eksctl?
+      eksctl is a CLI tool used to:
+       - Create EKS clusters
+       -  Create node groups
+       -  Delete clusters
+       -  Manage EKS easily from terminal
+
+### In real-time companies, most EKS clusters are created using eksctl + CLI, not manually from console.
+
+### Download eksctl
+```
+sudo wget https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz
+```
+### What this does:
+
+**wget → Downloads file from internet**
+
+**$(uname -s) → Detects your OS automatically (Linux/Darwin)**
+
+**amd64 → 64-bit architecture**
+
+**Downloads compressed file (.tar.gz)**
+
+👉 This downloads the latest eksctl version.
+
+### 2️⃣ Extract & Move to System Path
+```
+sudo tar -xzvf eksctl_$(uname -s)_amd64.tar.gz -C /usr/local/bin
+```
+Breakdown:
+
+tar → Extract archive
+
+-x → extract
+
+-z → unzip gzip
+
+-v → verbose
+
+-f → file
+
+-C /usr/local/bin → extract directly into system bin folder
+
+## 👉 Why /usr/local/bin?
+
+Because it is in system PATH.
+
+So you can run:
+```
+eksctl
+```
+from anywhere in terminal.
+
+### 3️⃣ Verify Installation
+```
+eksctl version
+```
