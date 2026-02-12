@@ -106,51 +106,21 @@ ________________________________________________________________________________
 
 ### In real-time companies, most EKS clusters are created using eksctl + CLI, not manually from console.
 
-### Download eksctl
+🔹 Install eksctl on Amazon Linux / RHEL / CentOS
+### Step 1: Download the latest release
 ```
-sudo wget https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" -o eksctl.tar.gz
 ```
-### What this does:
 
-**wget → Downloads file from internet**
-
-**$(uname -s) → Detects your OS automatically (Linux/Darwin)**
-
-**amd64 → 64-bit architecture**
-
-**Downloads compressed file (.tar.gz)**
-
-👉 This downloads the latest eksctl version.
-
-### 2️⃣ Extract & Move to System Path
+### Step 2: Extract it
 ```
-sudo tar -xzvf eksctl_$(uname -s)_amd64.tar.gz -C /usr/local/bin
+tar -xzf eksctl.tar.gz
 ```
-Breakdown:
-
-tar → Extract archive
-
--x → extract
-
--z → unzip gzip
-
--v → verbose
-
--f → file
-
--C /usr/local/bin → extract directly into system bin folder
-
-## 👉 Why /usr/local/bin?
-
-Because it is in system PATH.
-
-So you can run:
+### Step 3: Move it to system path
 ```
-eksctl
+sudo mv eksctl /usr/local/bin
 ```
-from anywhere in terminal.
-
-### 3️⃣ Verify Installation
+### Step 4: Verify installation
 ```
 eksctl version
 ```
