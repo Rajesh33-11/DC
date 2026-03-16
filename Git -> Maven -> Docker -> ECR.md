@@ -53,3 +53,18 @@ sudo systemctl enable docker
 ```
 docker --version
 ```
+## Verify AWS CLI
+```
+aws --version
+```
+## Install AWS CLI
+AWS CLI is required to push images to ECR.
+```
+sudo apt install awscli -y
+```
+## Verify AWS CLI
+```
+aws --version
+```
+## Configure AWS CLI
+Configure AWS credentials.
