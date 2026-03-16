@@ -3,6 +3,19 @@
 git --version
 ```
 ## Verify Java
+```
+java -version
+```
+## Install Java (JDK)
+ Maven requires Java.
+```
+sudo apt install openjdk-17-jdk -y
+```
+## Verify Java
+```
+java -version
+```
+
 
 Install Java (JDK)
 
