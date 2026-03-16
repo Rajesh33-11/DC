@@ -2,6 +2,7 @@
 ```
 git --version
 ```
+
 ## Verify Java
 ```
 java -version
