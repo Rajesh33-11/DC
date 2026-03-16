@@ -2,6 +2,9 @@
 ```
 git --version
 ```
+<img width="1885" height="566" alt="image" src="https://github.com/user-attachments/assets/526a1bee-a39c-4211-b18b-af9a07061300" />
+<img width="1885" height="566" alt="image" src="https://github.com/user-attachments/assets/526a1bee-a39c-4211-b18b-af9a07061300" />
+
 
 ## Verify Java
 ```
