@@ -16,9 +16,6 @@ sudo apt install openjdk-17-jdk -y
 java -version
 ```
 
-
-Install Java (JDK)
-
 ## Clone the Git Repository
 ```
 https://github.com/azuredevops7/maven-project.git
@@ -36,4 +33,23 @@ sudo apt install maven -y
 ```
 mvn -version
 ```
-
+## Verify Docker
+```
+docker --version
+```
+## Install Docker
+```
+sudo apt install docker.io -y
+```
+## Start Docker
+```
+sudo systemctl start docker
+```
+## Enable Docker
+```
+sudo systemctl enable docker
+```
+## Verify Docker
+```
+docker --version
+```
