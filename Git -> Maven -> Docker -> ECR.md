@@ -23,3 +23,17 @@ Install Java (JDK)
 ```
 https://github.com/azuredevops7/maven-project.git
 ```
+## Verify Maven
+```
+mvn -version
+```
+
+## Install Maven
+```
+sudo apt install maven -y
+```
+## Verify Maven
+```
+mvn -version
+```
+
